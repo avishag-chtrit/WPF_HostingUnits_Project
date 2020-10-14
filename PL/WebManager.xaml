@@ -1,0 +1,49 @@
+﻿<Window x:Class="PL.WebManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="WebManager" Height="450" Width="800">
+    <Grid>
+        <Grid x:Name= "WebManeger_grid">
+            <Button x:Name="GuestRequest_button" Content="Guest Request Lists" HorizontalAlignment="Left" Height="60" Margin="59,258,0,0" VerticalAlignment="Top" Width="196" Click="GuestRequest_button_Click" FontFamily="Tempus Sans ITC" FontSize="22" FontWeight="Bold">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF763B3B" Offset="0"/>
+                        <GradientStop Color="#FFBC6464" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="HostingUnit_button" Content="Hosting Units Lists" HorizontalAlignment="Left" Height="60" Margin="503,258,0,0" VerticalAlignment="Top" Width="196" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="22" Click="HostingUnit_button_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFAF6B6B" Offset="0"/>
+                        <GradientStop Color="#FF9C4646" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Order_button" Content="Orders Lists" HorizontalAlignment="Left" Height="54" Margin="304,310,0,0" VerticalAlignment="Top" Width="156" FontFamily="Tempus Sans ITC" FontSize="22" FontWeight="Bold" Click="Order_button_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFB96767" Offset="0"/>
+                        <GradientStop Color="#FFAF6B6B" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="BankBranch_button" Content="Bank Branch Lists" HorizontalAlignment="Left" Height="60" Margin="59,349,0,0" VerticalAlignment="Top" Width="198" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="22" Click="BankBranch_button_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFB96565" Offset="0"/>
+                        <GradientStop Color="#FFB96767" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="MoreFunctions_button" Content="More Functions" HorizontalAlignment="Left" Height="60" Margin="505,349,0,0" VerticalAlignment="Top" Width="196" FontFamily="Tempus Sans ITC" FontSize="22" FontWeight="Bold" Background="#FFA85757" Click="MoreFunctions_button_Click"/>
+        </Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://q-cf.bstatic.com/images/hotel/max1280x900/912/9128649.jpg"/>
+        </Grid.Background>
+    </Grid>
+</Window>

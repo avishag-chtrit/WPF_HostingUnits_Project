@@ -1,0 +1,63 @@
+﻿<Window x:Class="PL.GuestRequestList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="GuestRequestList" Height="450" Width="800">
+    <Grid x:Name="GuestRequeslist_grid" Margin="0,0,-8,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="105*"/>
+            <RowDefinition Height="316*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://luxuryhospitalityconsulting.com/wp-content/uploads/2019/08/PoolOpen_web.jpg"/>
+        </Grid.Background>
+        <ComboBox x:Name="GuestRequestList_combobox"   HorizontalAlignment="Left" Height="34" Margin="358,19,0,0" VerticalAlignment="Top" Width="260" Grid.Column="1" SelectionChanged="GuestRequestList_combobox_SelectionChanged" >
+            <ComboBoxItem>Num of Guests</ComboBoxItem>
+            <ComboBoxItem>Area</ComboBoxItem>
+            <ComboBoxItem>Unit Type</ComboBoxItem>
+            <ComboBoxItem>All</ComboBoxItem>
+        </ComboBox>
+
+        <Label x:Name="GuestRequestList_label" Content="Select List:" HorizontalAlignment="Left" Height="43" Margin="220,10,0,0" VerticalAlignment="Top" Width="133" FontFamily="Segoe Print" FontSize="22" FontWeight="Bold" Background="{x:Null}" Grid.Column="1" Foreground="#FF28A49C"/>
+        <DataGrid x:Name="GuestRequestList_dataGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="282" Margin="6,0.333,0,0" VerticalAlignment="Top" Width="785" Opacity="0.8" Grid.Row="1" FontFamily="Tempus Sans ITC" FontWeight="Bold" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn x:Name="requestKeyColumn" Header="RequestKey" >
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <TextBlock Text="{Binding GuestRequestKey}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!--<DataGridTextColumn x:Name="requestKeyColumn" Binding="{Binding GuestRequestKey}" Header="RequestKey" Width="SizeToHeader"/>-->
+                <DataGridTextColumn x:Name="privateNameColumn" Binding="{Binding PrivateName}" Header="PrivateName" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="familyNameColumn" Binding="{Binding FamilyName}" Header="FamilyName" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="MailAddressColumn" Binding="{Binding MailAddress}" Header=" MailAddress " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="StatusColumn" Binding="{Binding Status}" Header=" Status   " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="RegistrationDateColumn" Binding="{Binding RegistrationDate}" Header=" Registration Date    " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="EntryDateColumn" Binding="{Binding EntryDate}" Header=" EntryDate        " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="ReleaseDateColumn" Binding="{Binding ReleaseDate}" Header=" ReleaseDate        " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="AdultsColumn" Binding="{Binding Adults}" Header="Adults" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="ChildrenColumn" Binding="{Binding Children}" Header="Children" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="AreaColumn" Binding="{Binding Area}" Header=" Area   " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="SubAreaColumn" Binding="{Binding SubArea}" Header=" SubArea      " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="TypeColumn" Binding="{Binding Type}" Header=" Type       " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="poolColumn" Binding="{Binding pool}" Header=" pool       " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="jacuzziColumn" Binding="{Binding jacuzzi}" Header=" jacuzzi       " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="gardenColumn" Binding="{Binding garden}" Header=" garden       " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="childAtColumn" Binding="{Binding childAt}" Header=" childAttractions   " Width="SizeToHeader"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</Window>

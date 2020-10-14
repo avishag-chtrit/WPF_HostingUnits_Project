@@ -1,0 +1,164 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.GuestRequest"
+        Name="updateRequestLabelWindow"
+        mc:Ignorable="d"
+        Title="GuestRequest" Height="450" Width="800" Loaded="Window_Loaded" FontFamily="Arial">
+    <Window.Resources>
+        <SolidColorBrush x:Key="BrushColor" Color="#FFCF74A1"/>
+        <CollectionViewSource x:Key="guestRequestViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:GuestRequest}, CreateList=True}"/>
+
+        <Style TargetType="Label" x:Key="button">
+            <Setter Property="FontWeight" Value="ExtraBold">
+            </Setter>
+        </Style>
+        
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="355*"/>
+            <ColumnDefinition Width="438*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2" Margin="0,0,0.333,-0.333">
+            <Grid x:Name="GuestRequestGrid" HorizontalAlignment="Left" Margin="0,0,-0.333,0" Width="792" Height="409" VerticalAlignment="Top">
+                <Grid.Background>
+                    <ImageBrush ImageSource="https://www.daka90.co.il/MediaFiles/_033ph00h_20112019104312.jpg"/>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160*"/>
+                    <ColumnDefinition Width="169*"/>
+                    <ColumnDefinition Width="0*"/>
+                    <ColumnDefinition Width="179*"/>
+                    <ColumnDefinition Width="166*"/>
+                    <ColumnDefinition Width="118*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="41*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="42*"/>
+                    <RowDefinition Height="41"/>
+                    <RowDefinition Height="45*"/>
+                    <RowDefinition Height="41*"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="Auto" MinHeight="41"/>
+                </Grid.RowDefinitions>
+                <Label Content="Area:" HorizontalAlignment="Left" Margin="16,0,0,15" Grid.Row="7" VerticalAlignment="Center" Height="26" Width="70" Background="{x:Null}" Foreground="#FFAE4888" FontFamily="Viner Hand ITC" FontSize="16" FontWeight="ExtraBlack"/>
+                <ComboBox x:Name="areaComboBox" Foreground="{StaticResource BrushColor}" FontSize="14"  ItemsSource="{Binding Area}" Height="28" Margin="19,6,30,0" Grid.Row="7" Grid.Column="1" VerticalAlignment="Top"/>
+
+                <Label Content="Children Attractions:" Grid.Column="3" HorizontalAlignment="Left" Margin="0,3,0,39" VerticalAlignment="Center" Height="38" Width="182" Background="{x:Null}" Foreground="#FFAE4888" FontFamily="Viner Hand ITC" FontWeight="ExtraBlack" FontSize="16" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <ComboBox x:Name="childAtComboBox" Foreground="{StaticResource BrushColor}" FontSize="12" Grid.Column="4" ItemsSource="{Binding childAt}" Height="Auto"  Margin="3,8,27,7" RenderTransformOrigin="0.5,0.5" Grid.Row="3">
+                    <ComboBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.094"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ComboBox.RenderTransform>
+                </ComboBox>
+
+                <Label Content="  Number of Children:" Grid.Column="3" HorizontalAlignment="Left" Margin="4,3,0,1" Grid.Row="4" VerticalAlignment="Center" Height="38" Width="175" Background="{x:Null}" Foreground="#FFAE4888" FontWeight="ExtraBold" FontFamily="Viner Hand ITC" FontSize="16"/>
+                <TextBox x:Name="childrenTextBox" Foreground="{StaticResource BrushColor}"   Grid.Column="4" HorizontalAlignment="Left" Height="24" Margin="10,9,0,9" Grid.Row="4" Text="{Binding Children, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="131"/>
+
+                <Label Content="Entry Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="15,7,0,8" Grid.Row="5" VerticalAlignment="Center" Height="26" Width="124" Foreground="#FFAE4888" FontWeight="ExtraBold" FontFamily="Viner Hand ITC" FontSize="16"/>
+                <DatePicker x:Name="entryDateDatePicker"  Grid.Column="1" HorizontalAlignment="Left" Margin="19,0,0,6" Grid.Row="5" SelectedDate="{Binding EntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Bottom" Height="26" Width="121" Background="{x:Null}" Cursor="None" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF528048" DisplayDateEnd="2020-12-31" DisplayDateStart="2020-01-02"/>
+
+                <Label Content="Family Name:" Grid.Column="0" HorizontalAlignment="Center" Margin="16,7,22,5" VerticalAlignment="Center" Height="26" Width="122" RenderTransformOrigin="0.477,0.538" Foreground="#FFAE4888" FontWeight="Bold" FontSize="16" FontFamily="Viner Hand ITC" Grid.Row="3" FontStyle="Italic"/>
+                <TextBox x:Name="familyNameTextBox" Foreground="{StaticResource BrushColor}" FontSize="14"  Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="19,7,0,5" Text="{Binding FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="121" Grid.Row="3"/>
+
+                <Label Content="Garden:" Grid.Column="3" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="5" VerticalAlignment="Top" Height="38" Width="103" Background="{x:Null}" FontFamily="Viner Hand ITC" FontSize="18" FontWeight="ExtraBold" Foreground="#FFAE4888" Grid.RowSpan="2"/>
+                <ComboBox x:Name="gardenComboBox" Foreground="{StaticResource BrushColor}" FontSize="12" Grid.Column="4" ItemsSource="{Binding garden}" Height="Auto" Margin="5,10,25,6" Grid.Row="5"/>
+                <Label Content="Jacuzzi:" Grid.Column="3" HorizontalAlignment="Left" Margin="10,1,0,39" Grid.Row="6" VerticalAlignment="Center" Height="46" Width="118" Background="{x:Null}" FontFamily="Viner Hand ITC" FontSize="16" FontWeight="ExtraBlack" Foreground="#FFAE4888" Grid.RowSpan="2"/>
+                <ComboBox x:Name="jacuzziComboBox" Foreground="{StaticResource BrushColor}" FontSize="12" Grid.Column="4" ItemsSource="{Binding jacuzzi}" Height="Auto" Margin="5,11,25,10" Grid.Row="6"/>
+
+                <Label Content="Mail Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,1,0,9" Grid.Row="4" VerticalAlignment="Center" Height="32" Width="122" Foreground="#FFAE4888" FontFamily="Viner Hand ITC" FontSize="16" FontWeight="ExtraBold"/>
+                <TextBox x:Name="mailAddressTextBox" Foreground="{StaticResource BrushColor}" FontSize="14"  Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="19,11,0,5" Grid.Row="4" Text="{Binding MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="121"/>
+
+                <Label Content="Pool:" Grid.Column="3" HorizontalAlignment="Left" Margin="12,0,0,7" Grid.Row="7" VerticalAlignment="Center" Height="34" Width="76" Background="{x:Null}" FontFamily="Viner Hand ITC" FontSize="16" FontWeight="ExtraBlack" Foreground="#FFAE4888"/>
+                <ComboBox x:Name="poolComboBox" Foreground="{StaticResource BrushColor}" FontSize="12" Grid.Column="4" ItemsSource="{Binding pool}" Height="Auto" Margin="5,10,25,6" Grid.Row="7"/>
+
+                <Label Content="Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,4,0,3" VerticalAlignment="Center" Height="28" Width="129" FontSize="16" FontFamily="Viner Hand ITC" TextOptions.TextHintingMode="Fixed" BorderBrush="#FFD0DA3A" FontWeight="Bold" OpacityMask="#FFED2E2E" Background="{x:Null}" Foreground="#FFAE4888" Grid.Row="2"/>
+                <TextBox x:Name="privateNameTextBox" Foreground="{StaticResource BrushColor}" FontSize="14"  Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="19,4,0,7" Text="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="121" Background="#FFF9F2F2" Grid.Row="2"/>
+
+                <Label Content="Release Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,11,0,8" Grid.Row="6" VerticalAlignment="Center" Height="26" Width="116" Foreground="#FFAE4888" FontFamily="Viner Hand ITC" FontSize="16" FontWeight="ExtraBold"/>
+                <DatePicker x:Name="releaseDateDatePicker" Grid.Column="1" HorizontalAlignment="Left" Margin="19,11,0,6" Grid.Row="6"  SelectedDate="{Binding ReleaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Height="28" Width="121" RenderTransformOrigin="0.5,2.458" FontFamily="Segoe Script" FontWeight="ExtraBold" Foreground="#FF528048"/>
+
+
+
+                <Label Content="Sub Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,4,0,16" Grid.Row="8" VerticalAlignment="Center" Height="26" Width="122" RenderTransformOrigin="0.383,-2.577" Background="{x:Null}" Foreground="#FFAE4888" FontWeight="ExtraBlack" FontFamily="Viner Hand ITC" FontSize="16"/>
+                <ComboBox x:Name="subAreaComboBox" Grid.Column="1" Foreground="{StaticResource BrushColor}" FontSize="14"  ItemsSource="{Binding SubArea}"  Height="Auto" Margin="20,13,30,11" Grid.Row="8" RenderTransformOrigin="0.5,0.5">
+                    <ComboBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0.198"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ComboBox.RenderTransform>
+                </ComboBox>
+
+                <Label Content="Type:" Margin="12,1,59,27" VerticalAlignment="Center" Height="48" RenderTransformOrigin="-0.378,6.615" Background="{x:Null}" Foreground="#FFAE4888" FontWeight="ExtraBold" FontFamily="Viner Hand ITC" FontSize="18" Grid.Column="3" OpacityMask="Black" Grid.Row="1" Grid.RowSpan="2"/>
+                <ComboBox x:Name="typeComboBox" Foreground="{StaticResource BrushColor}" FontSize="12" ItemsSource="{Binding Type}" Height="Auto" Margin="10,14,25,5" Grid.Column="4" Grid.Row="1"  />
+
+                <TextBox x:Name="Adults_tb" Foreground="{StaticResource BrushColor}" FontSize="14" Text="{Binding Adults, Mode=TwoWay}" Grid.Column="4" HorizontalAlignment="Left" Height="24" Margin="10,7,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+                <Label Content="Number of Adults:" HorizontalAlignment="Left" Height="32" Margin="4,7,0,0" Grid.Row="2" VerticalAlignment="Top" Width="182" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" Foreground="#FFAE4888" FontSize="16" FontFamily="Viner Hand ITC" FontWeight="ExtraBlack" Grid.Column="3" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                <Button x:Name="addGuestRequest_button" Content="Add Request" Grid.Column="1" HorizontalAlignment="Left" Margin="62,10,0,0" Grid.Row="9" VerticalAlignment="Top" Width="159" Grid.ColumnSpan="3" Height="29" RenderTransformOrigin="0.5,0.5" Click="AddGuestRequest_button_Click" FontSize="24" FontFamily="Rockwell Condensed">
+                    <Button.Style>
+                        <Style x:Name="TriggerStyle_buttom" TargetType="Button">
+                            <Setter Property="Foreground" Value="Black"/>
+                              <Style.Triggers>
+                                <Trigger Property = "IsMouseOver" Value = "True">
+                                    <Setter Property = "Foreground" Value = "Blue" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAE4888" Offset="0"/>
+                            <GradientStop Color="#FFE4D5D5" Offset="0.933"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button  x:Name="updateGuestRequest_button" Content="Update Request" Grid.Column="3" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="9" VerticalAlignment="Top" Width="159" Height="29" FontSize="24" FontFamily="Rockwell Condensed" Grid.ColumnSpan="2" Click="updateGuestRequest_button_Click">
+                    <Button.Style>
+                        <Style x:Name="TriggerStyle_button" TargetType="Button">
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Style.Triggers>
+                                <Trigger Property = "IsMouseOver" Value = "True">
+                                    <Setter Property = "Foreground" Value = "Blue" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFAE4888" Offset="0"/>
+                            <GradientStop Color="#FFE4D5D5" Offset="0.933"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Label Content="Guest Request Key:" HorizontalAlignment="Left" Margin="0,8,0,0" VerticalAlignment="Top"  Height="28" Width="159" FontSize="16" FontFamily="Viner Hand ITC" BorderBrush="#FFD0DA3A" FontWeight="Bold" OpacityMask="#FFED2E2E" Background="{x:Null}" Foreground="#FFAE4888" Grid.Row="1"/>
+                <TextBlock x:Name="GuestRequestKey_block" Foreground="{StaticResource BrushColor}"  Grid.Column="1" HorizontalAlignment="Left" Margin="19,14,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Width="120" Height="26" RenderTransformOrigin="0.542,0.577" Grid.Row="1" Background="#FFEEEEEE" FontSize="14"/>
+                <CheckBox x:Name="Update_CheckBox" IsChecked="false" Content="Update Request" HorizontalAlignment="Left"  Margin="19,16,0,0" VerticalAlignment="Top" Grid.Column="1" Width="120" ClickMode="Press" Checked="Update_CheckBox_Checked" Unchecked="Update_CheckBox_unchecked"/>
+                <Label  x:Name="update1_label" Content="Do You Want to Update?" HorizontalAlignment="Left" Margin="9,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="update2_label"  Content="{Binding updateLabel, ElementName= updateRequestLabelWindow}" Grid.Column="3" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="186" Visibility="Hidden" Height="29" Grid.ColumnSpan="2"/>
+                <ComboBox x:Name="UpdateRequestComboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="29,11,0,0" VerticalAlignment="Top" Width="112" Visibility="Hidden" SelectionChanged="UpdateRequestComboBox_SelectionChanged"/>
+
+
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

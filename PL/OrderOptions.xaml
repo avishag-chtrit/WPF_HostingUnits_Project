@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.OrderOptions"
+        mc:Ignorable="d"
+        Title="OrderOptions" Height="450" Width="800" Loaded="Window_Loaded_1">
+    <Window.Resources>
+        <CollectionViewSource x:Key="orderViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Order}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name= "OrderOptionsGrid" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+            <Grid.Background>
+                <ImageBrush ImageSource="https://blog.nonsolocrociere.it/wp-content/uploads/2017/07/sea-02.jpg"/>
+            </Grid.Background>
+            <Button x:Name="addOrder_button" Content="Add Order" HorizontalAlignment="Left" Margin="135,328,0,0" VerticalAlignment="Top" Width="179" FontSize="24" FontFamily="Segoe Print" Height="51" Click="AddOrder_button_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF86B9B5"/>
+                        <GradientStop Color="#FF8AE4E4" Offset="0.747"/>
+                        <GradientStop Color="#FF62E7E6" Offset="0.992"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Grid x:Name="grid2" DataContext="{StaticResource orderViewSource}" HorizontalAlignment="Left" Margin="274,116,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Create Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="4,3,0,0" Grid.Row="2" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+                <DatePicker x:Name="createDateDatePicker1" IsEnabled="False" HorizontalAlignment="Left" Margin="3,1,0,4" Grid.Row="2" SelectedDate="{Binding CreateDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Grid.Column="1"/>
+                <Label Content="Guest Request Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="4,3,0,1" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+                <Label Content="Hosting Unit Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,2,0,4" Grid.Row="1" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+                <Label Content="Order Date:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+                <DatePicker x:Name="orderDateDatePicker1" IsEnabled="False" Grid.Column="1" HorizontalAlignment="Left" Margin="3" Grid.Row="3" SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center"/>
+                <Label Content="Order Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+                <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center" Foreground="#FFA4507E" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="14"/>
+                <TextBlock  x:Name="GuestRequestKey_block" Text="{Binding}"  HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="18" Grid.Column="1"/>
+                <TextBlock  x:Name="HostingUnit_block" HorizontalAlignment="Left" Margin="5,9,0,0" TextWrapping="Wrap" Text="{Binding}"  VerticalAlignment="Top" Height="19" Width="118" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock  x:Name="OrderKey_block" HorizontalAlignment="Left" Margin="10,6,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="4" Height="23" Width="113"/>
+                <TextBlock  x:Name="Status_block"    HorizontalAlignment="Left" Margin="10,3,0,0" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Grid.Column="1" Grid.Row="5" Height="26" Width="113"/>
+            </Grid>
+            <Label x:Name="GuestRequest_label"  Content="Choose Guest Request:" HorizontalAlignment="Left" Margin="20,68,0,0" VerticalAlignment="Top" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+            <Label  x:Name="HostingUnit_label"  Content="Choose Hosting Unit:" HorizontalAlignment="Left" Margin="374,71,0,0" VerticalAlignment="Top" FontFamily="Tempus Sans ITC" FontWeight="Bold" Foreground="#FFA4507E" FontSize="14"/>
+            <ComboBox x:Name="GuestRequest_Combobox" ItemsSource="{Binding}"  HorizontalAlignment="Left" Margin="175,68,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GuestRequest_Combobox_SelectionChanged"/>
+            <ComboBox  x:Name="HostingUnit_Combobox" HorizontalAlignment="Left" Margin="517,76,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HostingUnit_Combobox_SelectionChanged"/>
+
+            <Button x:Name="UpdateOrder_button_Copy" Content="Update Order" HorizontalAlignment="Left" Margin="461,328,0,0" VerticalAlignment="Top" Width="179" FontSize="24" FontFamily="Segoe Print" Height="51" Click="UpdateOrder_button_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF86B9B5"/>
+                        <GradientStop Color="#FF8AE4E4" Offset="0.747"/>
+                        <GradientStop Color="#FF62E7E6" Offset="0.992"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <CheckBox x:Name="UpdateOrdercheckBox" Content="Yes" IsChecked="False" HorizontalAlignment="Left" Margin="233,29,0,0" VerticalAlignment="Top" Unchecked="UpdateOrdercheckBox_Unchecked"  Checked="UpdateOrdercheckBox_Checked" FontWeight="Bold" FontFamily="Tempus Sans ITC" Foreground="#FFA4507E"/>
+            <Label x:Name="UpdateOrder1_label" Content="Would You Like To Update your Order?" HorizontalAlignment="Left" Margin="13,23,0,0" VerticalAlignment="Top" Foreground="#FFA4507E" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+            <ComboBox x:Name="UpdatecomboBox" Visibility="Hidden" HorizontalAlignment="Left" Margin="560,27,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="UpdateComboBox_SelectionChanged"/>
+            <Label x:Name="UpdateOrder2_label" Visibility="Hidden" Content="choose the order you would like to update" HorizontalAlignment="Left" Margin="307,22,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+    </Grid>
+</Window>

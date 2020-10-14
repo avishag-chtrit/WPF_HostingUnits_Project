@@ -1,0 +1,28 @@
+﻿<Window x:Class="PL.BankBranckList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="BankBranckList" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="https://luxuryhospitalityconsulting.com/wp-content/uploads/2019/08/PoolOpen_web.jpg"/>
+        </Grid.Background>
+        <Label x:Name="BanlBranchList_label" Content="Select List" HorizontalAlignment="Left" Height="78" Margin="186,13,0,0" VerticalAlignment="Top" Width="144" FontFamily="Segoe Print" FontSize="22" FontWeight="Bold" Foreground="#FF28A49C"/>
+        <ComboBox x:Name="BanlBranchList_comboBox" HorizontalAlignment="Left" Height="33" Margin="346,19,0,0" VerticalAlignment="Top" Width="253" SelectionChanged="BanlBranchList_comboBox_SelectionChanged">
+            <ComboBoxItem>Bank names</ComboBoxItem>
+            <ComboBoxItem>All</ComboBoxItem>
+        </ComboBox>
+        <DataGrid x:Name="BanlBranchList_DataGrid" HorizontalAlignment="Left" Height="292" Margin="108,96,0,0" VerticalAlignment="Top" Width="633" Opacity="0.8" FontFamily="Tempus Sans ITC" FontWeight="Bold">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="BankNumberColumn" Binding="{Binding BankNumber}" Header="      Bank Number      " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="BankNameColumn" Binding="{Binding BankName}" Header="       Bank Name      " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="BranchNumberColumn" Binding="{Binding BranchNumber}" Header="      Branch Number      " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="BranchAddressColumn" Binding="{Binding BranchAddress}" Header="      Branch Address      " Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="BranchCityColumn" Binding="{Binding BranchCity}" Header="      Branch City       " Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

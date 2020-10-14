@@ -1,0 +1,206 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PL.HostingUnitOptions"
+        mc:Ignorable="d"
+        Title="HostingUnitOptions" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="hostingUnitViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:HostingUnit}, CreateList=True}"/>
+        <CollectionViewSource x:Key="hostViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Host}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="HostingUnitOptionsGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792">
+            <Grid.Background>
+                <ImageBrush ImageSource="https://thewallpaper.co/wp-content/uploads/2016/02/beautiful-sea-view-sand-ocean-fresh-air-amazing-beach-holiday-happiness-widescreen-free-1504x1128.jpg" Opacity="0.85" />
+            </Grid.Background>
+            <Grid x:Name="HostingUnit_color_grid" HorizontalAlignment="Left" Height="419" Margin="0,0,-9,0" VerticalAlignment="Top" Width="801" Opacity="0.25" Background="White"/>
+
+
+            <Label x:Name="Owner_label" Content="Owner of Unit:" HorizontalAlignment="Left" Height="28" Margin="298,75,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+            <Grid x:Name="PrivateNameHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="287,139,0,0" VerticalAlignment="Top" Width="224" RenderTransformOrigin="0.625,0.399">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="105"/>
+                    <ColumnDefinition Width="Auto" MinWidth="128"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Private Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="10,2,0,4" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="84" Foreground="#FF441D3C" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+                <TextBox x:Name="privateNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="0,4" Grid.Row="0" Text="{Binding XPath=Owner.PrivateName}" VerticalAlignment="Center" Width="118" />
+            </Grid>
+            <Grid x:Name="FamilyNameHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="296,176,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="91"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Family Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,4,0,2" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="81" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <TextBox x:Name="familyNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="5,4,0,6" Grid.Row="0" Text="{Binding XPath=Owner.FamilyName}"  VerticalAlignment="Center" Width="118"/>
+            </Grid>
+            <Grid x:Name="PhoneNumHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="298,213,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="91"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Phone Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="-2,2,0,4" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="93" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <TextBox x:Name="phoneNumberTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0" Text=" " VerticalAlignment="Center" Width="120" />
+            </Grid>
+            <Grid x:Name="MailHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="296,250,0,0" VerticalAlignment="Top" Width="214">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="90"/>
+                    <ColumnDefinition Width="Auto" MinWidth="123"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Mail Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="81" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <TextBox x:Name="mailAddressTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="24" Margin="3,4,0,4" Grid.Row="0" Text="{Binding XPath=Owner.MailAddress}" VerticalAlignment="Center" Width="120"/>
+            </Grid>
+            <Grid x:Name="CollectionHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="286,283,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Collection Clearance:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <CheckBox x:Name="collectionClearanceCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Owner.CollectionClearance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid x:Name="BankAccHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="298,311,0,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7.167"/>
+                    <ColumnDefinition Width="110.833"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Bank Account Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="-14,6,0,0" Grid.Row="0" VerticalAlignment="Center" Foreground="#FF441D3C" Grid.ColumnSpan="2" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <TextBox x:Name="bankAccountNumberTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="22" Margin="0,6,0,0" Grid.Row="0" Text="{Binding Owner.bankAccountNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="110"/>
+            </Grid>
+            <Grid x:Name="BankDetailHostGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="576,119,0,0" VerticalAlignment="Top" Height="203" Width="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="27*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="34*"/>
+                    <RowDefinition Height="34*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Bank Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="2,3,0,7" VerticalAlignment="Center" Height="26" Width="73" Grid.Row="1" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold" BorderBrush="#FF667298" Background="{x:Null}"/>
+                <Label Content="Bank Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,5,0,10" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="85" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold" BorderBrush="#FF667298" Background="{x:Null}"/>
+                <TextBox x:Name="bankNumberTextBox" Grid.Column="1" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="10,9,0,10" Grid.Row="2" Text="{Binding Owner.BankBranchDetails.bankNumber}" VerticalAlignment="Center" Width="95"/>
+                <Label Content="Branch Address:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,8" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="95" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold" Grid.ColumnSpan="2" BorderBrush="#FF667298" Background="{x:Null}"/>
+                <TextBox x:Name="branchAddressTextBox" Grid.Column="1" IsEnabled="False" HorizontalAlignment="Left" Height="22" Margin="10,11,0,9" Grid.Row="3" Text="{Binding XPath=Owner.BankBranchDetails.BranchAddress}" VerticalAlignment="Center" Width="96"/>
+                <Label Content="Branch City:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,5,0,11" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="72" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold" RenderTransformOrigin="0.514,-0.526" BorderBrush="#FF667298" Background="{x:Null}"/>
+                <TextBox x:Name="branchCityTextBox" Grid.Column="1" IsEnabled="False" HorizontalAlignment="Left" Height="24" Margin="10,6,0,12" Grid.Row="4" Text="{Binding XPath=Owner.BankBranchDetails.BranchCity}" VerticalAlignment="Center" Width="95"/>
+                <Label Content="Branch Number:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,7,0,9" Grid.Row="5" VerticalAlignment="Center" Height="26" Width="96" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="ExtraBold" Grid.ColumnSpan="2" BorderBrush="#FF667298" Background="{x:Null}"/>
+                <ComboBox x:Name="BankNamecomboBox" Foreground="Gray"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="94" Height="23" Grid.Column="1" Grid.Row="1" SelectionChanged="BankNamecomboBox_SelectionChanged"/>
+                <ComboBox x:Name="BranchNumbercomboBox" HorizontalAlignment="Left" Margin="7,7,0,0" VerticalAlignment="Top" Width="97" BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" Grid.Column="1" Grid.Row="5" Height="22" SelectionChanged="BranchNumbercomboBox_SelectionChanged"/>
+            </Grid>
+            <Label x:Name="BankBranchDetails_label" Content="Bank Detailes:" HorizontalAlignment="Left" Margin="576,85,0,0" VerticalAlignment="Top" Width="143" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="addUnit_button" Content="Add Hosting Unit" HorizontalAlignment="Left" Height="42" Margin="41,367,0,0" VerticalAlignment="Top" Width="186" FontSize="20" FontFamily="Tempus Sans ITC" Click="AddUnit_button_Click" FontWeight="Bold">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4A7D95" Offset="0.144"/>
+                        <GradientStop Color="#FF7FB6CF" Offset="0.462"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="UpdateUnit_button" Content="Update Hosting Unit" HorizontalAlignment="Left" Margin="302,367,0,0" VerticalAlignment="Top" Width="186" FontSize="20" FontFamily="Tempus Sans ITC" Height="42" Click="UpdateUnit_button_Click" FontWeight="Bold">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4A7D95" Offset="0.144"/>
+                        <GradientStop Color="#FF7FB6CF" Offset="0.462"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Label x:Name="UnitToUpdate_label" Content="Choose the Unit to update or delete:" HorizontalAlignment="Left" Margin="404,43,0,0" VerticalAlignment="Top" Height="32" Width="229" FontSize="14" FontFamily="Tempus Sans ITC" TextOptions.TextHintingMode="Animated" Visibility="Hidden" FontWeight="Bold" Background="{x:Null}" Foreground="#FF441D3C"/>
+            <ComboBox x:Name="UnitToUpdade_comboBox" HorizontalAlignment="Left" Margin="652,43,0,0" VerticalAlignment="Top" Width="117" Height="23" Visibility="Hidden" SelectionChanged="UnitToUpdade_comboBox_SelectionChanged"/>
+            <Label x:Name="Unit_label" Content="Hosting Unit Detailes:" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Foreground="#FF441D3C" FontSize="14" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+            <Grid x:Name="gridOfUnitDetailes" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="3,106,0,0" VerticalAlignment="Top" Width="246" Height="191">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="121"/>
+                    <ColumnDefinition Width="Auto" MinWidth="125"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="32*"/>
+                    <RowDefinition Height="30*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,0,0,7" Grid.Row="3" VerticalAlignment="Center" Height="26" Width="37" FontWeight="Bold" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC"/>
+                <ComboBox x:Name="areaComboBox" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding Area}" Margin="3,4,0,7" Grid.Row="3" VerticalAlignment="Center" Width="120" Grid.Column="1">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Label Content="Hosting Unit Name:" Grid.Column="0" HorizontalAlignment="Left" Margin="0,5,0,2" Grid.Row="2" VerticalAlignment="Center" Height="26" Width="114" Foreground="#FF441D3C" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+                <TextBox x:Name="hostingUnitNameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="3,5,0,6" Grid.Row="2" Text="{Binding XPath=HostingUnitName}" VerticalAlignment="Center" Width="120"/>
+                <Label Content="Sub Area:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,4,0,2" Grid.Row="4" VerticalAlignment="Center" Height="26" Width="60" Foreground="#FF441D3C" FontWeight="Bold"/>
+                <ComboBox x:Name="subAreaComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding SubArea}" Margin="3,6,0,4" Grid.Row="4" VerticalAlignment="Center" Width="120">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Label Content="Type:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,1,0,3" Grid.Row="5" VerticalAlignment="Center" Height="26" Width="37" Foreground="#FF441D3C" FontWeight="Bold" FontFamily="Tempus Sans ITC"/>
+                <ComboBox x:Name="typeComboBox" Grid.Column="1" HorizontalAlignment="Left" Height="22" ItemsSource="{Binding Type}" Margin="3,3,0,5" Grid.Row="5" VerticalAlignment="Center" Width="120">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <Label x:Name= "HostingUnitKey_label" Content="Hosting Unit Key:" HorizontalAlignment="Left" Margin="3,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.252,0.559" Height="25" Width="102" FontFamily="Tempus Sans ITC" FontWeight="Bold" Background="{x:Null}" Foreground="#FF441D3C"/>
+                <TextBlock x:Name= "HostingUnitKey_block" HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Width="105" Height="20"><Run Background="#FFFFFDFD"/></TextBlock>
+            </Grid>
+            <Grid x:Name="HostKeyGrid" DataContext="{StaticResource hostingUnitViewSource}" HorizontalAlignment="Left" Margin="303,103,0,0" VerticalAlignment="Top" Width="201">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" MinWidth="121"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Host Key:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,0,3" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="102" Grid.ColumnSpan="2" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+                <TextBlock x:Name="HostKey_Block" Grid.Column="1" HorizontalAlignment="Left" Margin="0,8,0,3" Grid.Row="0" Text="{Binding}" VerticalAlignment="Center" Height="21" Width="85"/>
+            </Grid>
+            <Button x:Name="deleteHostingUnit_button" Content="Delete Hosting Unit" HorizontalAlignment="Left" Margin="569,367,0,0" VerticalAlignment="Top" Width="186" Height="42" FontSize="20" FontFamily="Tempus Sans ITC" Click="deleteHostingUnit_button_Click" FontWeight="Bold">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4A7D95" Offset="0.144"/>
+                        <GradientStop Color="#FF7FB6CF" Offset="0.462"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <CheckBox x:Name="UpdateUnit_checkBox" Content="Yes" HorizontalAlignment="Left" Margin="650,22,0,0" VerticalAlignment="Top" IsChecked="False" Unchecked="UpdateUnit_checkBox_Unchecked" Checked="UpdateUnit_checkBox_Checked" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+            <Label x:Name="UpdateUnit_label" Content="Would You Like to Update or Delete a Unit?"  HorizontalAlignment="Left" Margin="404,16,0,0" VerticalAlignment="Top" Foreground="#FF441D3C" FontFamily="Tempus Sans ITC" FontWeight="Bold"/>
+            <Label x:Name="ExistingHost_label" Content="Does the Host already exists?" HorizontalAlignment="Left" Height="34" Margin="10,15,0,0" VerticalAlignment="Top" Width="188" FontFamily="Tempus Sans ITC" FontSize="14" Foreground="#FF441D3C" FontWeight="Bold"/>
+            <CheckBox x:Name="ExistingHost_checkBox" Content="Yes" IsChecked="False"  HorizontalAlignment="Left" Height="19" Margin="203,22,0,0" VerticalAlignment="Top" Width="46" FontFamily="Tempus Sans ITC" FontSize="14" Foreground="#FF441D3C" FontWeight="Bold" Checked="ExistingHost_checkBox_Checked" Unchecked="ExistingHost_checkBox_Unchecked" />
+            <ComboBox x:Name="ExistingHost_comboBox" Visibility="Hidden" HorizontalAlignment="Left" Height="19" Margin="131,51,0,0" VerticalAlignment="Top" Width="115" SelectionChanged="ExistingHost_comboBox_SelectionChanged" />
+            <Label x:Name="chooseExistingHost_Label"   Content="Choose Host:" Visibility="Hidden" HorizontalAlignment="Left" Height="27" Margin="10,43,0,0" VerticalAlignment="Top" Width="95" FontFamily="Tempus Sans ITC" FontSize="14" Foreground="#FF441D3C" FontWeight="Bold"/>
+
+
+        </Grid>
+
+    </Grid>
+</Window>
